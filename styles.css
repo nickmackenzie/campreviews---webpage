@@ -1,0 +1,318 @@
+/* Root Variables */
+:root {
+    /* Color Variables */
+    --primary-color: #005c38;      /* Forest green */
+    --secondary-color: #007a4b;    /* Slightly lighter green for hover states */
+
+    --background-color: #f8f9fa;   /* Off-white background */
+    --text-color: #2c3e50;         /* Dark gray for regular text */
+    --border-color: #e2e8f0;       /* Light gray for borders */
+
+    /* Spacing Variables */
+    --spacing-sm: 1rem;
+    --spacing-md: 2rem;
+    --spacing-lg: 4rem;
+}
+
+body {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 var(--spacing-md);
+    font-family: "Cabin", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    font-variation-settings: "wdth" 100;
+    background-color: var(--background-color);
+    color: var(--text-color);
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 700;
+    color: var(--primary-color);
+}
+
+header {
+    position: relative;  /* This is important for absolute positioning of lines */
+    text-align: center;
+    padding: var(--spacing-md) 0;
+    margin-top: var(--spacing-md);
+}
+.header-content {
+    display: flex;
+    align-items: center;  /* Vertically center logo and h1 */
+    justify-content: center; /* Horizontally center logo and h1 */
+    gap: var(--spacing-md); /* Increased space between logo and h1 */
+    margin-bottom: var(--spacing-sm);
+}
+header img {
+    width: 80px;  /* Set a smaller fixed width for the logo */
+    height: auto;
+}
+header::before {
+    top: 0;
+}
+header p {
+    max-width: 600px;
+    margin: 0 auto var(--spacing-md);
+    color: var(--text-color);
+}
+
+
+.button-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-md);
+    justify-content: center;
+    margin-top: var(--spacing-md);
+}
+
+/* Responsive adjustments */
+@media screen and (max-width: 768px) {
+    .header-content {
+        flex-direction: column; /* Stack logo and h1 on mobile */
+    }
+    
+    header img {
+        width: 60px;  /* Larger logo when stacked */
+        margin-bottom: var(--spacing-sm);
+    }
+}
+header::after,
+.info::after,
+.video-demo::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 1px;
+    background-color: var(--border-color);
+    left: 0;
+    bottom: 0;
+}
+
+header::before {
+    top: 0;
+}
+
+.section-line::after {
+    content: "";
+    display: block;
+    width: 100%;
+    height: 1px;
+    background-color: var(--border-color);
+    margin: var(--spacing-md) 0;
+}
+
+.info,
+.video-demo {
+    position: relative;
+    padding-bottom: var(--spacing-md);
+}
+
+.info {
+    display: flex;
+    gap: var(--spacing-md);
+    margin: var(--spacing-md) 0;
+}
+
+.info .left,
+.info .right {
+    flex: 1;
+}
+
+.video-demo {
+    display: flex;
+    gap: var(--spacing-md);
+    margin: var(--spacing-md) 0;
+}
+
+.video-demo .left,
+.video-demo .right {
+    flex: 1;
+}
+
+/* Responsive layout */
+@media screen and (max-width: 768px) {
+    body {
+        padding: 0 var(--spacing-sm);
+    }
+
+    .info,
+    .video-demo {
+        flex-direction: column;
+    }
+
+    .video-demo .right {
+        order: -1;
+    }
+}
+
+
+
+.button-link {
+    display: inline-block;
+    padding: 12px 24px;
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 6px;
+    color: #eee;
+    text-decoration: none;
+    font-size: 14px;
+    line-height: 1;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+}
+
+.button-link:hover {
+    background-color: #fff;
+    color: #eee;
+    transform: translateY(-1px);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Make the first button primary */
+.button-container div:first-child .button-link {
+    background-color: var(--primary-color);
+    color: #fff;
+}
+
+.button-container div:first-child .button-link:hover {
+    background-color: var(--secondary-color);
+}
+
+/* Style for other buttons */
+.button-container div:not(:first-child) .button-link {
+    color: var(--primary-color);
+}
+
+.button-container div:not(:first-child) .button-link:hover {
+    color: var(--primary-color);
+}
+
+/* Dark mode styles */
+@media (prefers-color-scheme: dark) {
+    body {
+        background-color: #121212;
+        color: #f2f1ed;
+    }
+
+    .button-link {
+        background-color: #000;
+        color: #f2f1ed;
+    }
+
+    .button-link:hover {
+        background-color: #222;
+        color: var(--accent-color);
+    }
+
+    .button-container div:first-child .button-link {
+        color: #f2f1ed;
+    }
+
+    .button-container div:first-child .button-link:hover {
+        color: var(--accent-color);
+    }
+
+    .disclaimer {
+        color: #aaa;
+    }
+
+    .section-line::after {
+        background-color: #444;
+    }
+}
+
+footer {
+    margin-bottom: var(--spacing-lg);
+}
+
+.disclaimer {
+    font-size: 0.875rem;  /* 14px */
+    color: #666;
+    line-height: 1.6;
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+    opacity: 0.8;
+}
+
+/* Responsive adjustment */
+@media screen and (max-width: 768px) {
+    .disclaimer {
+        font-size: 0.8rem;
+        padding: 0 var(--spacing-sm);
+    }
+
+    .button-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .button-link {
+        width: 100%;
+        text-align: center;
+    }
+}
+img, iframe {
+    border-radius: 6px; /* Match the button border-radius */
+    overflow: hidden; /* Ensures the border-radius works on iframes */
+}
+
+
+
+/* If you want to exclude the header logo from these styles */
+header img {
+    border-radius: 0;
+    box-shadow: none;
+}
+
+
+/* Create a container for the donations section */
+.donations-section {
+    position: relative;
+    padding: var(--spacing-md) 0;
+    text-align: center;
+    max-width: 480px; /* Limit width for better presentation */
+    margin: var(--spacing-md) auto; /* Center the section */
+}
+
+/* Style the section header if you want to add one */
+.donations-section h2 {
+    margin-bottom: var(--spacing-sm);
+    color: var(--primary-color);
+}
+
+
+
+
+
+/* Style the iframe itself */
+.donations-frame iframe {
+    border: none;
+    width: 100%;
+    height: 612px;
+    padding: var(--spacing-sm);
+    background: var(--background-color);
+}
+
+/* Add the section line styling */
+.donations-section::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 1px;
+    background-color: var(--border-color);
+    left: 0;
+    bottom: 0;
+}
+
+/* Responsive adjustments */
+@media screen and (max-width: 768px) {
+    .donations-section {
+        padding: var(--spacing-sm);
+    }
+    
+    .donations-frame iframe {
+        height: 550px; /* Slightly shorter on mobile */
+    }
+}
